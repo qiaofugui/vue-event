@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-container">
     <!-- 一级路由挂载点 -->
     <router-view></router-view>
   </div>
@@ -13,5 +13,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
+.app-container {
+  height: 100%;
+}
 </style>
