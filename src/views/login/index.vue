@@ -1,12 +1,11 @@
 <template>
   <div>
-    <!-- 一级路由挂载点 -->
-    <router-view></router-view>
+    <h1>Login 组件</h1>
   </div>
 </template>
 <script>
 export default {
-  name: 'App',
+  name: 'Login',
   data () {
     return {}
   }
