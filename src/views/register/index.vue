@@ -6,17 +6,17 @@
       <!-- 标题的盒子 -->
       <div class="title-box"></div>
       <!-- 注册的表单区域 -->
-      <el-form ref="form" :model="form">
+      <el-form ref="form" :model="form" :rules="rulesObj">
         <!-- 用户名 -->
-        <el-form-item>
+        <el-form-item prop="username">
           <el-input v-model="form.username" clearable placeholder="请输入用户名"></el-input>
         </el-form-item>
         <!-- 密码 -->
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input v-model="form.password" show-password clearable placeholder="请输入密码"></el-input>
         </el-form-item>
         <!-- 确认密码 -->
-        <el-form-item>
+        <el-form-item prop="repassword">
           <el-input v-model="form.repassword" show-password clearable placeholder="请再次确认密码"></el-input>
         </el-form-item>
 
@@ -33,7 +33,17 @@
 export default {
   name: 'Register',
   data () {
+    const samPwdFn = (rule, value, callback) => {
+      if (value !== this.form.password) {
+        // 如果验证失败,则调用回调函数时,指定一个 Error 对象
+        callback(new Error('两次输入的密码不一致!'))
+      } else {
+        // 如果验证成功,则直接调用 callback 回调函数
+        callback()
+      }
+    }
     return {
+      // 表单数据对象
       form: {
         // 用户名
         username: '',
@@ -41,6 +51,22 @@ export default {
         password: '',
         // 确认密码
         repassword: ''
+      },
+      // 表单规则对象
+      rulesObj: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { pattern: /^[a-zA-Z0-9]{3,9}$/, message: '用户名必须是3~9位的字母或数字', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { pattern: /^\S{6,16}$/, message: '密码必须是6~16位的非空字符', trigger: 'blur' }
+        ],
+        repassword: [
+          { required: true, message: '请再次输入密码', trigger: 'blur' },
+          { pattern: /^\S{6,16}$/, message: '密码必须是6~16位的非空字符', trigger: 'blur' },
+          { validator: samPwdFn, trigger: 'blur' }
+        ]
       }
     }
   },
