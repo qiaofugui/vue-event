@@ -6,7 +6,26 @@
       <!-- 标题的盒子 -->
       <div class="title-box"></div>
       <!-- 注册的表单区域 -->
+      <el-form ref="form" :model="form">
+        <!-- 用户名 -->
+        <el-form-item>
+          <el-input v-model="form.username" clearable placeholder="请输入用户名"></el-input>
+        </el-form-item>
+        <!-- 密码 -->
+        <el-form-item>
+          <el-input v-model="form.password" show-password clearable placeholder="请输入密码"></el-input>
+        </el-form-item>
+        <!-- 确认密码 -->
+        <el-form-item>
+          <el-input v-model="form.repassword" show-password clearable placeholder="请再次确认密码"></el-input>
+        </el-form-item>
 
+        <el-form-item>
+          <el-button type="primary" class="btn-reg" @click="registerFn">注册</el-button>
+
+          <el-link type="info">去登陆</el-link>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -14,7 +33,22 @@
 export default {
   name: 'Register',
   data () {
-    return {}
+    return {
+      form: {
+        // 用户名
+        username: '',
+        // 密码
+        password: '',
+        // 确认密码
+        repassword: ''
+      }
+    }
+  },
+  methods: {
+    // 注册
+    registerFn () {
+
+    }
   }
 }
 </script>
@@ -42,7 +76,7 @@ export default {
   background: url(../../assets/images/login_title.png) no-repeat center;
   }
 
-  .btn-reg {
+.btn-reg {
     width: 100%;
   }
 }
