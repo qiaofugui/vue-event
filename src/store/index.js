@@ -12,9 +12,15 @@ export default new Vuex.Store({
     // 用来存储登陆成功成功之后，得到的 token
     token: '',
     // 保存用户的信息
-    userInfo: {}
+    userInfo: {} // { id, nickname, username, email, user_pic }
   },
   getters: {
+    // 用户昵称
+    nickname: state => state.userInfo.nickname,
+    // 用户名
+    username: state => state.userInfo.username,
+    // 用户头像
+    user_pic: state => state.userInfo.user_pic
   },
   mutations: {
     // 更新 token 的函数

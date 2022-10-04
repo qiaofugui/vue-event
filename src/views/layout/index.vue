@@ -9,7 +9,7 @@
         <el-submenu index="1">
           <template slot="title">
             <!-- 头像 -->
-            <img src="../../assets/images/logo.png" alt="" class="avatar" />
+            <img src="../../assets/images/avatar.jpg" alt="" class="avatar" />
             <span>个人中心</span>
           </template>
           <el-menu-item index="1-1"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
@@ -20,8 +20,14 @@
       </el-menu>
     </el-header>
     <el-container>
-      <!-- 侧边栏区域 -->
-      <el-aside width="200px">Aside</el-aside>
+      <!-- 侧边栏用户信息区域 -->
+      <el-aside width="200px">
+        <div class="user-box">
+          <img :src="user_pic" alt="" v-if="user_pic">
+          <img src="../../assets/images/avatar.jpg" alt="" v-else>
+          <span>欢迎 {{ nickname || username }}</span>
+        </div>
+      </el-aside>
       <el-container>
         <!-- 页面主体区域 -->
         <el-main>
@@ -36,11 +42,14 @@
   </el-container>
 </template>
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'Layout',
   data () {
     return {}
+  },
+  computed: {
+    ...mapGetters(['nickname', 'username', 'user_pic'])
   },
   methods: {
     ...mapMutations(['updateToken', 'updateUserInfo']),
@@ -102,4 +111,31 @@ export default {
     margin-right: 10px;
     object-fit: cover;
   }
+
+// 侧边栏用户信息区域
+.user-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  margin-top: 15px;
+  /* border-top: 1px solid #000;
+  border-bottom: 1px solid #000; */
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, .5),0px 1px 5px 1px rgba(0, 0, 0, .5);
+  user-select: none;
+
+  img {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  span {
+    color: #fff;
+    font-size: 12px;
+  }
+}
 </style>
