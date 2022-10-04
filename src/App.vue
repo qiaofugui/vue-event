@@ -5,16 +5,10 @@
   </div>
 </template>
 <script>
-import { getUserInfoAPI } from '@/api'
 export default {
   name: 'App',
   data () {
     return {}
-  },
-  created () {
-    getUserInfoAPI().then(res => {
-      console.log(res.data)
-    })
   }
 }
 </script>
