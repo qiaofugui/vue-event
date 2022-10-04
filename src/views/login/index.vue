@@ -28,6 +28,8 @@
 <script>
 // 登录接口
 import { loginAPI } from '@/api'
+
+import { mapMutations } from 'vuex'
 export default {
   name: 'Register',
   data () {
@@ -53,6 +55,8 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['updateToken']),
+
     /** 登录
      * @description: { username: 用户名, password: 密码 }
      * @return {*} Promise
@@ -60,15 +64,21 @@ export default {
     loginFn () {
       this.$refs.form.validate(async valid => {
         if (valid) {
+          // 发起登录请求
           const { data: res } = await loginAPI(this.form)
           console.log(res)
+          // 登录失败
           if (res.code !== 0) return this.$message.error(res.message)
+          // 登录成功
           this.$message.success(res.message)
+          // 把 token 存储到 vuex
+          this.updateToken(res.token)
         } else {
           return false
         }
       })
     }
+
   }
 }
 </script>
