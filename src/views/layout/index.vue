@@ -43,7 +43,7 @@ export default {
     return {}
   },
   methods: {
-    ...mapMutations(['updateToken']),
+    ...mapMutations(['updateToken', 'updateUserInfo']),
     logoutFn () {
       // 询问是否退出
       this.$confirm('确定退出吗？', '提示', {
@@ -53,6 +53,8 @@ export default {
       }).then(() => {
         // 清空 token
         this.updateToken('')
+        // 清空 用户信息
+        this.updateUserInfo({})
         // 跳转到 登录页
         this.$router.push('/login')
         this.$message.warning('已退出')
