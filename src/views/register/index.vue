@@ -58,15 +58,15 @@ export default {
       rulesObj: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
-          { pattern: /^[a-zA-Z0-9]{3,9}$/, message: '用户名必须是3~9位的字母或数字', trigger: 'blur' }
+          { pattern: /^[a-zA-Z0-9]{1,10}$/, message: '用户名必须是1~10位的字母或数字', trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { pattern: /^\S{6,16}$/, message: '密码必须是6~16位的非空字符', trigger: 'blur' }
+          { pattern: /^\S{6,15}$/, message: '密码必须是6~15的非空字符', trigger: 'blur' }
         ],
         repassword: [
           { required: true, message: '请再次输入密码', trigger: 'blur' },
-          { pattern: /^\S{6,16}$/, message: '密码必须是6~16位的非空字符', trigger: 'blur' },
+          { pattern: /^\S{6,15}$/, message: '密码必须是6~15位的非空字符', trigger: 'blur' },
           { validator: samPwdFn, trigger: 'blur' }
         ]
       }
