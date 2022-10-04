@@ -73,6 +73,8 @@ export default {
           this.$message.success(res.message)
           // 把 token 存储到 vuex
           this.updateToken(res.token)
+          // 跳转到布局页
+          this.$router.push('/')
         } else {
           return false
         }
