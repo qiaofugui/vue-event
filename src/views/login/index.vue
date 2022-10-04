@@ -29,7 +29,7 @@
 // 登录接口
 import { loginAPI } from '@/api'
 
-import { mapMutations, mapActions } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Register',
   data () {
@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     ...mapMutations(['updateToken']),
-    ...mapActions(['getUserInfoActions']),
 
     /** 登录
      * @description: { username: 用户名, password: 密码 }
@@ -76,8 +75,6 @@ export default {
           this.updateToken(res.token)
           // 跳转到布局页
           this.$router.push('/')
-          // 保存用户信息
-          this.getUserInfoActions()
         } else {
           return false
         }
