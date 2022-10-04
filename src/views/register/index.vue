@@ -23,13 +23,15 @@
         <el-form-item>
           <el-button type="primary" class="btn-reg" @click="registerFn">注册</el-button>
 
-          <el-link type="info">去登陆</el-link>
+          <el-link type="info" @click="$router.push('/login')">去登陆</el-link>
         </el-form-item>
       </el-form>
     </div>
   </div>
 </template>
 <script>
+// 注册接口
+import { registerAPI } from '@/api'
 export default {
   name: 'Register',
   data () {
@@ -73,7 +75,22 @@ export default {
   methods: {
     // 注册
     registerFn () {
-
+      this.$refs.form.validate(async valid => {
+        if (valid) {
+          // 通过校验 调用注册接口
+          const { data: res } = await registerAPI(this.form)
+          console.log(res)
+          // 注册失败，提示用户
+          if (res.code !== 0) return this.$message.error(res.message)
+          // 注册成功，提示用户
+          this.$message.success(res.message)
+          // 跳转到登录页面
+          this.$router.push('/login')
+        } else {
+          // 阻止提交显示提示
+          return false
+        }
+      })
     }
   }
 }
