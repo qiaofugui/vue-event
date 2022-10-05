@@ -8,8 +8,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    // redirect: '/login'
-    component: () => import('@/views/layout/')
+    component: () => import('@/views/layout/'),
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/views/home')
+      }
+    ]
   },
   {
     path: '/reg',
