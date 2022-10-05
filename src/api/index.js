@@ -1,7 +1,7 @@
 // 引入自定义 axios 函数
 import request from '@/utils/request'
 
-import store from '@/store'
+// import store from '@/store'
 
 // 注册
 export const registerAPI = ({ username, password, repassword }) => {
@@ -32,10 +32,10 @@ export const loginAPI = ({ username, password }) => {
 export const getUserInfoAPI = () => {
   return request({
     url: '/my/userinfo',
-    method: 'GET',
-    headers: {
+    method: 'GET'
+    /* headers: {
       Authorization: store.state.token
-    }
+    } */
   })
 }
 
@@ -43,9 +43,9 @@ export const getUserInfoAPI = () => {
 export const getMenusAPI = () => {
   return request({
     url: '/my/menus',
-    method: 'GET',
-    headers: {
+    method: 'GET'
+    /* headers: {
       Authorization: store.state.token
-    }
+    } */
   })
 }
