@@ -4,7 +4,7 @@
       <el-row class="spannel_list" :gutter="10">
         <el-col :sm="6" :xs="12">
           <div class="spannel">
-            <em>1015</em><span>篇</span>
+            <em>996</em><span>篇</span>
             <b>总文章数</b>
           </div>
         </el-col>
@@ -25,7 +25,7 @@
 
         <el-col :sm="6" :xs="12">
           <div class="spannel scolor03">
-            <em>123</em><span>条</span>
+            <em>321</em><span>条</span>
             <b>日增评论数</b>
           </div>
         </el-col>
@@ -51,10 +51,61 @@
   </div>
 </template>
 <script>
+import * as echarts from 'echarts'
+
 export default {
   name: 'Home',
   data () {
     return {}
+  },
+  mounted () {
+    this.initCurveFn()
+  },
+  methods: {
+    // 初始化面积图
+    initCurveFn () {
+      /* // 基于准备好的dom，初始化echarts实例
+      const myChart = echarts.init(document.getElementById('curve_show'))
+      // 绘制图表
+      myChart.setOption({
+        title: {
+          text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+          }
+        ]
+      }) */
+
+      const chartDom = document.getElementById('curve_show')
+      const myChart = echarts.init(chartDom)
+      const option = {
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            areaStyle: {}
+          }
+        ]
+      }
+      option && myChart.setOption(option)
+    }
   }
 }
 </script>
