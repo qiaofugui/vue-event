@@ -38,3 +38,14 @@ export const getUserInfoAPI = () => {
     }
   })
 }
+
+// 左侧菜单接口
+export const getMenusAPI = () => {
+  return request({
+    url: '/my/menus',
+    method: 'GET',
+    headers: {
+      Authorization: store.state.token
+    }
+  })
+}
