@@ -10,10 +10,10 @@
             <el-input v-model="userForm.name" disabled></el-input>
           </el-form-item>
           <el-form-item label="用户昵称" prop="nickname">
-            <el-input v-model="userForm.nickname" placeholder="输入昵称"></el-input>
+            <el-input v-model="userForm.nickname" :placeholder="$store.state.userInfo.nickname"></el-input>
           </el-form-item>
           <el-form-item label="用户邮箱" prop="email">
-            <el-input v-model="userForm.email" placeholder="输入邮箱"></el-input>
+            <el-input v-model="userForm.email" :placeholder="$store.state.userInfo.email"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('userForm')">提交修改</el-button>
@@ -25,6 +25,7 @@
   </div>
 </template>
 <script>
+import { updateUserInfoAPI } from '@/api'
 export default {
   name: 'UserInfo',
   data () {
@@ -47,11 +48,20 @@ export default {
     }
   },
   methods: {
+    // 提交修改
     submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          alert('submit!')
+          this.userForm.id = this.$store.state.userInfo.id
+          const { data: res } = await updateUserInfoAPI(this.userForm)
+          if (res.code !== 0) return this.$message.error('更新用户信息失败')
+          this.$message.success('更新用户信息成功')
+          this.$store.dispatch('getUserInfoActions')
+          this.userForm.nickname = ''
+          this.userForm.email = ''
+          console.log(res)
         } else {
+          // 未通过校验
           return false
         }
       })
