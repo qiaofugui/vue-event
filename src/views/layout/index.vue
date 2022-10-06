@@ -5,14 +5,14 @@
       <!-- 左侧的 logo -->
       <img src="../../assets/images/logo.png" alt="" />
       <!-- 右侧的菜单 -->
-      <el-menu class="el-menu-top" mode="horizontal" background-color="#23262E" text-color="#fff" active-text-color="#409EFF">
+      <el-menu class="el-menu-top" mode="horizontal" background-color="#23262E" text-color="#fff" active-text-color="#409EFF" router>
         <el-submenu index="1">
           <template slot="title">
             <!-- 头像 -->
             <img src="../../assets/images/avatar.jpg" alt="" class="avatar" />
             <span>个人中心</span>
           </template>
-          <el-menu-item index="1-1"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
+          <el-menu-item index="/user-info"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
           <el-menu-item index="1-2"><i class="el-icon-camera"></i>更换头像</el-menu-item>
           <el-menu-item index="1-3"><i class="el-icon-key"></i>重置密码</el-menu-item>
         </el-submenu>
@@ -29,7 +29,7 @@
           <span>欢迎 <i>{{ nickname || username }}</i></span>
         </div>
 
-        <el-menu default-active="/home" class="el-menu-vertical-demo" background-color="#23262e" text-color="#fff" active-text-color="#409eff" unique-opened router>
+        <el-menu :default-active="$route.path" class="el-menu-vertical-demo" background-color="#23262e" text-color="#fff" active-text-color="#409eff" unique-opened router>
 
           <template v-for="item in menus">
             <!-- 不包含子菜单的 ”一级菜单“ -->
