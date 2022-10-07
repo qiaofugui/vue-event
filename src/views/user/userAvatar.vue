@@ -6,7 +6,7 @@
       </div>
       <div>
         <!-- 用户头像 -->
-        <img class="the_img preview" v-if="!avatar" :src="$store.getters.user_pic||'../../assets/images/avatar.jpg'" alt="" @click="chooseImg">
+        <img class="the_img preview" v-if="!avatar" src="../../assets/images/avatar.jpg" alt="" @click="chooseImg">
         <img class="the_img preview" v-else :src="avatar" alt="" @click="chooseImg">
 
         <!-- 按钮 -->
