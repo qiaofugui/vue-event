@@ -4,16 +4,16 @@
       <div slot="header" class="clearfix">
         <h3>基本资料</h3>
       </div>
-      <div style="width: 500px;">
+      <div style="width: 510px;">
         <el-form :model="userForm" :rules="rules" ref="userForm" label-width="100px" class="demo-userForm">
           <el-form-item label="登录名称" prop="name">
             <el-input v-model="userForm.name" disabled></el-input>
           </el-form-item>
           <el-form-item label="用户昵称" prop="nickname">
-            <el-input v-model="userForm.nickname" :placeholder="$store.state.userInfo.nickname"></el-input>
+            <el-input v-model="userForm.nickname" :placeholder="$store.state.userInfo.nickname || '输入昵称'"></el-input>
           </el-form-item>
           <el-form-item label="用户邮箱" prop="email">
-            <el-input v-model="userForm.email" :placeholder="$store.state.userInfo.email"></el-input>
+            <el-input v-model="userForm.email" :placeholder="$store.state.userInfo.email || '输入邮箱'"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('userForm')">提交修改</el-button>

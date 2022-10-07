@@ -9,12 +9,12 @@
         <el-submenu index="1">
           <template slot="title">
             <!-- 头像 -->
-            <img src="../../assets/images/avatar.jpg" alt="" class="avatar" />
+            <img :src="$store.getters.user_pic||'../../assets/images/avatar.jpg'" alt="" class="avatar" />
             <span>个人中心</span>
           </template>
           <el-menu-item index="/user-info"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
-          <el-menu-item index="1-2"><i class="el-icon-camera"></i>更换头像</el-menu-item>
-          <el-menu-item index="1-3"><i class="el-icon-key"></i>重置密码</el-menu-item>
+          <el-menu-item index="user-avatar"><i class="el-icon-camera"></i>更换头像</el-menu-item>
+          <el-menu-item index="user-pwd"><i class="el-icon-key"></i>重置密码</el-menu-item>
         </el-submenu>
         <el-menu-item index="2" @click="logoutFn"><i class="el-icon-switch-button"></i>退出</el-menu-item>
       </el-menu>
@@ -209,8 +209,15 @@ export default {
       font-style: normal;
     }
   }
-  .el-submenu__title,
-  .el-menu-item {
+}
+
+.main-container {
+  /deep/.el-submenu__title,
+  /deep/.el-menu-item,
+  /deep/.el-button,
+  /deep/.el-link,
+  /deep/.el-menu-item,
+  /deep/.el-submenu__title {
     width: 200px !important;
   }
 }
