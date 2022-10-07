@@ -88,3 +88,45 @@ export const updateUserPwdAPI = ({ old_pwd, new_pwd, re_pwd }) => {
     }
   })
 }
+
+// 获取文章的分类
+export const getArtCateListAPI = () => {
+  return request({
+    url: '/my/cate/list',
+    method: 'GET'
+  })
+}
+
+// 添加分类
+export const addArtCateAPI = ({ cate_name, cate_alias }) => {
+  return request({
+    url: '/my/cate/add',
+    method: 'POST',
+    data: {
+      cate_name,
+      cate_alias
+    }
+  })
+}
+
+// 更新分类
+export const updateArtCateAPI = ({ id, cate_name, cate_alias }) => {
+  return request({
+    url: '/my/cate/info',
+    method: 'PUT',
+    data: {
+      id,
+      cate_name,
+      cate_alias
+    }
+  })
+}
+
+// 删除分类
+export const delArtCateAPI = (params) => {
+  return request({
+    url: '/my/cate/del',
+    method: 'DELETE',
+    params
+  })
+}

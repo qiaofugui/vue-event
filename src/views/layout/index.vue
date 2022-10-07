@@ -17,7 +17,7 @@
           <el-menu-item index="user-avatar"><i class="el-icon-camera"></i>更换头像</el-menu-item>
           <el-menu-item index="user-pwd"><i class="el-icon-key"></i>重置密码</el-menu-item>
         </el-submenu>
-        <el-menu-item index="2" @click="logoutFn"><i class="el-icon-switch-button"></i>退出</el-menu-item>
+        <el-menu-item @click="logoutFn"><i class="el-icon-switch-button"></i>退出</el-menu-item>
       </el-menu>
     </el-header>
     <el-container>
@@ -215,7 +215,6 @@ export default {
 .main-container {
   /deep/.el-submenu__title,
   /deep/.el-menu-item,
-  /deep/.el-button,
   /deep/.el-link,
   /deep/.el-menu-item,
   /deep/.el-submenu__title {
