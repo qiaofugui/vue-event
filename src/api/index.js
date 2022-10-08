@@ -130,3 +130,12 @@ export const delArtCateAPI = (params) => {
     params
   })
 }
+
+// 发布文章
+export const pubArticleAPI = (fd) => {
+  return request({
+    url: '/my/article/add',
+    method: 'POST',
+    data: fd
+  })
+}

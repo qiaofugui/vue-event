@@ -7,7 +7,7 @@
 
       </div>
       <!-- 数据表格 -->
-      <el-table :data="cateList" style="width:100%;" border stripe>
+      <el-table :data="cateList" style="width:100%;min-width:550px;" border stripe>
         <el-table-column type="index" label="序号" width="100"></el-table-column>
         <el-table-column prop="cate_name" label="分类名称"></el-table-column>
         <el-table-column prop="cate_alias" label="分类别名"></el-table-column>

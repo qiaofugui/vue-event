@@ -32,7 +32,7 @@
       </el-row>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-width:650px;">
       <el-row class="curve-pie" :gutter="10">
         <el-col :sm="16" :xs="16">
           <div class="gragh_pannel" id="curve_show"></div>

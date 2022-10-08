@@ -1,7 +1,7 @@
 <template>
   <el-container class="main-container">
     <!-- 头部区域 -->
-    <el-header>
+    <el-header style="min-width:550px;">
       <!-- 左侧的 logo -->
       <img src="../../assets/images/logo.png" alt="" />
       <!-- 右侧的菜单 -->
@@ -215,9 +215,7 @@ export default {
 .main-container {
   /deep/.el-submenu__title,
   /deep/.el-menu-item,
-  /deep/.el-link,
-  /deep/.el-menu-item,
-  /deep/.el-submenu__title {
+  /deep/.el-link {
     width: 200px !important;
   }
 }
