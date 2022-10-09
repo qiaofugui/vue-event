@@ -139,3 +139,39 @@ export const pubArticleAPI = (fd) => {
     data: fd
   })
 }
+
+// 获取文章列表
+export const getArticleListAPI = ({ pagenum, pagesize, cate_id, state }) => {
+  return request({
+    url: '/my/article/list',
+    method: 'GET',
+    params: {
+      pagenum,
+      pagesize,
+      cate_id,
+      state
+    }
+  })
+}
+
+// 获取文章详情
+export const getArticleDetailAPI = (id) => {
+  return request({
+    url: '/my/article/info',
+    method: 'GET',
+    params: {
+      id
+    }
+  })
+}
+
+// 删除文章
+export const delArticleAPI = (id) => {
+  return request({
+    url: '/my/article/info',
+    method: 'DELETE',
+    params: {
+      id
+    }
+  })
+}

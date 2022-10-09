@@ -5,9 +5,11 @@ import store from '@/store'
 import router from '@/router'
 import { Message } from 'element-ui'
 
+export const baseURL = 'http://big-event-vue-api-t.itheima.net'
+
 // axios.create() 创建一个带配置项的自定义 axios 函数
 const request = axios.create({
-  baseURL: 'http://big-event-vue-api-t.itheima.net'
+  baseURL
 })
 
 // 定义请求拦截器

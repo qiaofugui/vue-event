@@ -15,6 +15,13 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
+// 格式化时间的库
+import dayjs from 'dayjs'
+// 添加到vue原型上
+Vue.prototype.$formDate = (dateObj) => {
+  return dayjs(dateObj).format('YYYY-MM-DD HH:mm:ss')
+}
+
 // 全局挂载
 Vue.use(VueQuillEditor)
 
