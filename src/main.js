@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 // 注册 element-ui 组件
-import '@/elementUI'
+// import '@/elementUI'
 
 import '@/assets/global.less'
 
