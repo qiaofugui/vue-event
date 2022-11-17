@@ -29,6 +29,11 @@ const { defineConfig } = require('@vue/cli-service')
 // }
 
 module.exports = defineConfig({
+  chainWebpack: config => {
+    if (process.env.analyzer) {
+      return config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+    }
+  },
   transpileDependencies: true,
   publicPath: process.env.NODE_NEV === 'development' ? '/' : './',
 
