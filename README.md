@@ -1,4 +1,4 @@
-http://joe___joe.gitee.io/vue-event
+http://qiao_fugui.gitee.io/vue-event/
 
 # vue-event
 
